@@ -19,7 +19,7 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    buildTypes {
+    /*buildTypes {
         debug {
             testCoverageEnabled true
             zipAlignEnabled false
@@ -34,7 +34,7 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
+    }*/
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -53,12 +53,11 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-            // Creates a Maven publication called "release".
             release(MavenPublication) {
-                from components.release
                 groupId = 'com.github.maurosoft1973'
                 artifactId = 'serilogj'
-                version = '1.0'
+                version = '1.0.0'
+                artifact(bundleReleaseAar)
             }
         }
     }
